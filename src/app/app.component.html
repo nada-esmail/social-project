@@ -1,9 +1,11 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
-<div class="d-flex justify-content-around mt-5 mb-5" *ngFor="let post of posts">
-    <app-card [post]="post"></app-card>
-</div>
-<div class="add-post">+</div>
+<ng-container *ngIf="!isPostFormShowen">
+    <div class="d-flex justify-content-around mt-5 mb-5" *ngFor="let post of AppService.posts">
+        <app-card [post]="post"></app-card>
+    </div>
+    <div class="add-post" (click)="isPostFormShowen=true">+</div>
+</ng-container>
 
-<app-reactive-form></app-reactive-form>
+<app-reactive-form *ngIf="isPostFormShowen"></app-reactive-form>
 <app-footer></app-footer>

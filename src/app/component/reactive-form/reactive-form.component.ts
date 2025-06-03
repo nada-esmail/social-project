@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { AppService } from '../../services/app.service';
+// import { FormGroup,FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,14 +8,6 @@ import { FormGroup,FormControl } from '@angular/forms';
   styleUrl: './reactive-form.component.css'
 })
 export class ReactiveFormComponent {
-  postForm = new FormGroup({
-    username: new FormControl(''),
-    userImage: new FormControl(''),
-    postDescription: new FormControl(''),
-    postImage: new FormControl('')
-  });
+  AppService = inject(AppService)
 
-  onSubmit() {
-    console.log('Post Data:', this.postForm.value);
-  }
 }

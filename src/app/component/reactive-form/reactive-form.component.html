@@ -1,6 +1,6 @@
-<p>reactive-form works!</p>
-<h2 class="p-2">Add New post</h2>
-<form class="container" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <p>reactive-form works!</p>
+<h2 class="p-2 text-center">Add New post</h2>
+<form class="container" [formGroup]="AppService.postForm" (ngSubmit)="AppService.onSubmit()">
   <!-- Username -->
   <div class="mb-3">
     <label for="username" class="form-label">Username</label>
@@ -26,5 +26,5 @@
   </div>
 
   <!-- Submit Button -->
-  <button type="submit" class="btn btn-primary">Add Post</button>
+  <button type="submit" class="btn btn-primary" (click)="AppService.onSubmit()">Add Post</button>
 </form>

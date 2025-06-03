@@ -23,7 +23,7 @@ import { ReactiveFormComponent } from './component/reactive-form/reactive-form.c
     InputOutputComponent,
     NotificationsComponent,
     SearchComponent,
-    ReactiveFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
