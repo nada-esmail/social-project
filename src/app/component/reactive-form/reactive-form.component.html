@@ -1,0 +1,30 @@
+<p>reactive-form works!</p>
+<h2 class="p-2">Add New post</h2>
+<form class="container" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <!-- Username -->
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+  </div>
+
+  <!-- User Image URL -->
+  <div class="mb-3">
+    <label for="userImage" class="form-label">User Image URL</label>
+    <input type="text" class="form-control" id="userImage" formControlName="userImage" placeholder="Enter image URL">
+  </div>
+
+  <!-- Post Description -->
+  <div class="mb-3">
+    <label for="postDescription" class="form-label">Post Description</label>
+    <textarea class="form-control" id="postDescription" formControlName="postDescription" rows="3" placeholder="Write something..."></textarea>
+  </div>
+
+  <!-- Post Image URL -->
+  <div class="mb-3">
+    <label for="postImage" class="form-label">Post Image URL</label>
+    <input type="text" class="form-control" id="postImage" formControlName="postImage" placeholder="Enter image URL">
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary">Add Post</button>
+</form>
