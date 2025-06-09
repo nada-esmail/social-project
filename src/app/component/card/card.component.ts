@@ -1,5 +1,6 @@
-import { Component,Input, Output } from '@angular/core';
+import { Component,inject,Input, Output } from '@angular/core';
 import { IPost } from '../../../models/posts.model';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-card',
@@ -8,13 +9,14 @@ import { IPost } from '../../../models/posts.model';
 })
 export class CardComponent {
   @Input() post: IPost ={
+    id: -1,
     userName: "",
-    userImgage: "",
+    userImage: "",
     postDescription: "",
     postImage: "",
     isLiked: false
 };
-  
+  appService = inject(AppService) 
   comments: string[] =[];
    comment: string ='';
    addComment(){

@@ -29,11 +29,11 @@
 <div class="card ">
   <div class="d-flex justify-content-between" >
     <div class="d-flex ">
-      <img class="m-1" width="50" height="50" [src]="post.userImgage" alt="">
+      <img class="m-1" width="50" height="50" [src]="post.userImage" alt="">
       <p class=" m-1 mt-3">{{post.userName}}</p>
     </div>
     <div class="align-content-center m-lg-2 ">
-      <button class="btn">
+      <button class="btn" (click)="appService.deletePost(post.id)">  
         <img  width="20" height="20" src="../../../assets/deleteIcon.svg" alt="">
       </button>
     </div>
@@ -41,7 +41,7 @@
       <img  [src]="post.postImage" alt="Card Image" class="card-img">
       <div class="card-body">
         <!-- <h3 class="card-title">Item </h3> -->
-        <h3 class="card-text">{{post.postDescription}}</h3>
+        <h3 class="card-text">{{post.postDescription | shorten:30}}</h3>
         <button class="btn btn-outline-primary w-100" (click)="post.isLiked = !post.isLiked">
   <i [ngClass]="{'fa-solid fa-thumbs-up text-primary': post.isLiked,
   'fa-regular fa-thumbs-up text-secondary': !post.isLiked}"class="me-2">

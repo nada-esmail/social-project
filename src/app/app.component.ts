@@ -9,6 +9,5 @@ import { AppService } from './services/app.service';
 export class AppComponent {
   title = 'first-project';
    AppService = inject(AppService)
-  isPostFormShowen=false;
 posts: any;
 }

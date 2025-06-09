@@ -12,6 +12,7 @@ import { InputOutputComponent } from './component/input-output/input-output.comp
 import { NotificationsComponent } from './component/notifications/notifications.component';
 import { SearchComponent } from './component/search/search.component';
 import { ReactiveFormComponent } from './component/reactive-form/reactive-form.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormComponent } from './component/reactive-form/reactive-form.c
     InputOutputComponent,
     NotificationsComponent,
     SearchComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,

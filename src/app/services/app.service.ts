@@ -8,22 +8,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppService {
    private _posts: IPost[] = [
     {
+      id: 1,
       userName: "Nada Esmail",
-      userImgage: "../assets/icon1.jpg",
+      userImage: "../assets/icon1.jpg",
       postDescription: "This is first post",
       postImage: "../assets/post1.jpg",
       isLiked: false
     },
     {
+      id:2,
       userName: "Sara Ali",
-      userImgage: "../assets/icon2.png",
+      userImage: "../assets/icon2.png",
       postDescription: "This is second post",
       postImage: "../assets/post2.jpg",
       isLiked: false
     },
     {
+      id: 3,
       userName: "Ahmed Omar",
-      userImgage: "../assets/icon3.jpg",
+      userImage: "../assets/icon3.jpg",
       postDescription: "This is third post",
       postImage: "../assets/post3.jpg",
       isLiked: false
@@ -31,19 +34,42 @@ export class AppService {
 
   ]
   postForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    userImage: new FormControl('', Validators.required),
-    postDescription: new FormControl('', Validators.required),
-    postImage: new FormControl('', Validators.required)
+    username: new FormControl<string>('', Validators.required),
+    userImage: new FormControl<string>('', Validators.required),
+    postDescription: new FormControl<string>('', Validators.required),
+    postImage: new FormControl<string>('', Validators.required)
   });
+  
+  isPostFormShowen=false;
+  
   onSubmit() {
-    console.log('Post Data:', this['postForm'].value);
+    this.addNewPost();
+    this.postForm.reset();
   }
-  addNewPost(newPost: IPost) {
-    this._posts.push(newPost)
+  addNewPost() {
+    if(this.postForm.valid){
+      const userName = this.postForm.value.username ?? '';
+      const userImage = this.postForm.value.userImage ?? '';
+      const postDescription = this.postForm.value.postDescription ?? '';
+      const postImage = this.postForm.value.postImage ?? '';
+      this._posts.push({
+        id: (this._posts[this._posts.length - 1]?.id ?? 0) + 1,
+        userName,
+        userImage,
+        postDescription,
+        postImage,
+        isLiked: false
+            })
+          }
+      
+          this.isPostFormShowen=false;
+        }
+  deletePost(id:number){
+    this._posts = this._posts.filter((post) => post.id !== id)
   }
-  get posts() {
-    return this._posts
-  }
-  constructor() { }
-}
+    get posts() {
+          return this._posts
+        }
+
+        constructor() { }
+      }
